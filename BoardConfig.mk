@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/klimtwifi
+LOCAL_PATH := device/samsung/klimtlte
 
 # Platform
 BOARD_VENDOR := samsung
@@ -43,7 +43,7 @@ BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Bootloader
-TARGET_OTA_ASSERT_DEVICE := klimtwifi
+TARGET_OTA_ASSERT_DEVICE := klimtlte
 
 # Camera
 # COMMON_GLOBAL_CFLAGS += -DUSE_MEMORY_HEAP_ION
@@ -58,7 +58,7 @@ COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 # Kernel
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := klimtwifi_01_defconfig
+TARGET_KERNEL_CONFIG := klimtlte_01_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/klimtwifi
 # TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
 # KERNEL_TOOLCHAIN := /home/cmbuild/android/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
@@ -87,7 +87,7 @@ BOARD_USES_HWC_SERVICES := true
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Hardware
-BOARD_HARDWARE_CLASS += device/samsung/klimtwifi/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/klimtlte/cmhw
 
 # Init
 TARGET_NR_SVC_SUPP_GIDS := 20
@@ -119,7 +119,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 12532580352
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # PowerHAL
-TARGET_POWERHAL_VARIANT := klimtwifi
+TARGET_POWERHAL_VARIANT := klimtlte
 
 # Recovery
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -136,7 +136,7 @@ BOARD_USES_SCALER := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-	device/samsung/klimtwifi/sepolicy
+	device/samsung/klimtlte/sepolicy
 
 BOARD_SEPOLICY_UNION += \
 	file_contexts \
@@ -175,4 +175,4 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
 
 # inherit from the proprietary version
--include vendor/samsung/klimtwifi/BoardConfigVendor.mk
+-include vendor/samsung/klimtlte/BoardConfigVendor.mk
