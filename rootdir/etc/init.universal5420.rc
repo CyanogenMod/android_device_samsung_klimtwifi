@@ -1,6 +1,7 @@
 import init.universal5420.usb.rc
 import init.universal5420.wifi.rc
 import init.samsung.rc
+import init.baseband.rc
 
 on init
     # Set permissions for persist partition
@@ -106,8 +107,8 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
-    setprop ro.radio.noril yes
-    stop ril-daemon
+    setprop ro.radio.noril no
+    start ril-daemon
 
     # Reduce reserved lowmem from ~48MB to ~12MB
     write /proc/sys/vm/lowmem_reserve_ratio "128 128"

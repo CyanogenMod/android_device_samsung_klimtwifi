@@ -134,6 +134,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # Power
@@ -146,14 +148,15 @@ TARGET_PROVIDES_INIT_RC := true
 PRODUCT_PACKAGES += \
     fstab.universal5420 \
     init.samsung.rc \
+    init.baseband.rc \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
     lpm.rc \
     ueventd.universal5420.rc
 
-# Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
+    cbd \
     libsecril-client \
     libsecril-client-sap
 
