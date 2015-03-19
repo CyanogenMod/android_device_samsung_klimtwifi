@@ -73,13 +73,14 @@
 /dev/vfsspi        0660   system     system
 
 # USB Driver
+/dev/ttyUSB0              0660   system     radio
 /dev/ttyUSB*              0660   system     usb
 /dev/usb/lp*              0660   system     usb
 
 # RIL
 /dev/ttyS0                0660   radio      system
 /dev/mbin0                0660   radio      system
-/dev/umts*               0660   radio      system
+/dev/umts*                0660   radio      system
 /dev/block/mmcblk0p13     0660   radio      system
 
 # MDM 9x25
