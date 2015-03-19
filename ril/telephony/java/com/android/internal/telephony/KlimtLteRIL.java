@@ -260,6 +260,9 @@ public class KlimtLteRIL extends RIL {
 
         switch(response) {
             // SAMSUNG STATES
+            case 11008: // RIL_DEVICE_READY:
+                ret = responseVoid(p);
+                break;
             case 11010: // RIL_UNSOL_AM:
                 ret = responseString(p);
                 String amString = (String) ret;
