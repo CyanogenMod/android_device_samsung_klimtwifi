@@ -14,12 +14,12 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/klimtwifi
+LOCAL_PATH := device/samsung/klimtlte
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
-DEVICE_PACKAGE_OVERLAYS += device/samsung/klimtwifi/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/klimtlte/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal xlarge hdpi xhdpi xxhdpi
@@ -134,6 +134,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # Power
@@ -146,14 +148,15 @@ TARGET_PROVIDES_INIT_RC := true
 PRODUCT_PACKAGES += \
     fstab.universal5420 \
     init.samsung.rc \
+    init.baseband.rc \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
     lpm.rc \
     ueventd.universal5420.rc
 
-# Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
+    cbd \
     libsecril-client \
     libsecril-client-sap
 
@@ -195,4 +198,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/klimtwifi/klimtwifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)

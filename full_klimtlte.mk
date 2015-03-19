@@ -13,14 +13,14 @@
 # limitations under the License.
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from klimtwifi device
-$(call inherit-product, device/samsung/klimtwifi/device.mk)
+# Inherit from klimtlte device
+$(call inherit-product, device/samsung/klimtlte/device.mk)
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_klimtwifi
-PRODUCT_DEVICE := klimtwifi
+PRODUCT_NAME := full_klimtlte
+PRODUCT_DEVICE := klimtlte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := SM-T700
+PRODUCT_MODEL := SM-T705

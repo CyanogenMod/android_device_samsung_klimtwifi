@@ -1,0 +1,23 @@
+on init
+    symlink /dev/block/mmcblk0p13 /dev/mbin0
+    restorecon /dev/mbin0
+    symlink  /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
+
+service cpboot-daemon /system/bin/cbd -d -txmm7160 -bh -mh -p13
+    class main
+    user root                                       
+    group radio cache inet misc audio sdcard_rw log sdcard_r shell
+
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log
+    onrestart restart cpboot-daemon
+
+# Modem Logging daemon                                                       
+service ML-daemon /system/bin/mlexe
+  class main 
+  user root 
+  group system radio inet net_raw
