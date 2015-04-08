@@ -170,6 +170,10 @@ ENABLE_WEBGL := true
 BOARD_USES_WFD_SERVICE := true
 BOARD_USES_WFD := true
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+BOARD_ANT_WIRELESS_POWER := "bluedroid"
+
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_WLAN_DEVICE                := bcmdhd
