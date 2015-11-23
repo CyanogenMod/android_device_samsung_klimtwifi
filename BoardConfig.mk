@@ -14,36 +14,10 @@
 # limitations under the License.
 #
 
+# Inherit from common exynos5420-common
+-include device/samsung/exynos5420-common/BoardConfigCommon.mk
+
 LOCAL_PATH := device/samsung/klimtwifi
-
-# Platform
-BOARD_VENDOR := samsung
-TARGET_BOARD_PLATFORM := exynos5
-TARGET_SLSI_VARIANT := insignal
-TARGET_SOC := exynos5420
-
-# Architecture
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := cortex-a15
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-
-# Audio
-BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
-
-# Bionic
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-
-# Bootloader
-TARGET_OTA_ASSERT_DEVICE := klimtwifi
 
 # Camera
 # COMMON_GLOBAL_CFLAGS += -DUSE_MEMORY_HEAP_ION
@@ -52,68 +26,6 @@ COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
 
-# Force the screenshot path to CPU consumer
-COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
-
-# Kernel
-BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := cyanogenmod_klimtwifi_defconfig
-TARGET_KERNEL_SOURCE := kernel/samsung/klimtwifi
-
-# Charging mode
-BOARD_CHARGER_SHOW_PERCENTAGE := true
-BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-BOARD_BATTERY_DEVICE_NAME := battery
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := universal5420
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-
-# FIMG2D
-BOARD_USES_SKIA_FIMGAPI := true
-BOARD_USES_NEON_BLITANTIH := true
-BOARD_USES_FIMGAPI_V4L2 := false
-
-# Graphics
-USE_OPENGL_RENDERER := true
-OVERRIDE_RS_DRIVER := libRSDriverArm.so
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 5
-
-# HWCServices
-BOARD_USES_HWC_SERVICES := true
-
-# Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# Hardware
-BOARD_HARDWARE_CLASS += device/samsung/klimtwifi/cmhw
-
-# Init
-TARGET_NR_SVC_SUPP_GIDS := 20
-
-# Media
-COMMON_GLOBAL_CFLAGS += -DUSE_NATIVE_SEC_NV12TILED # use format from fw/native
-COMMON_GLOBAL_CFLAGS += -DWIDEVINE_PLUGIN_PRE_NOTIFY_ERROR
-
-# OpenMAX Video
-BOARD_USE_STOREMETADATA := true
-BOARD_USE_METADATABUFFERTYPE := true
-BOARD_USE_S3D_SUPPORT := true
-BOARD_USE_DMA_BUF := true
-BOARD_USE_ANB_OUTBUF_SHARE := true
-BOARD_USE_GSC_RGB_ENCODER := true
-BOARD_USE_IMPROVED_BUFFER := true
-BOARD_USE_CSC_HW := false
-BOARD_USE_H264_PREPEND_SPS_PPS := false
-BOARD_USE_QOS_CTRL := false
-BOARD_USE_VP8ENC_SUPPORT := true
-BOARD_USE_ENCODER_RGBINPUT_SUPPORT := true
-BOARD_USE_DUALDPB_MODE := true
-
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
@@ -121,57 +33,29 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2527068160
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12532580352
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# Disable journaling on system.img to save space
-BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# Bootloader
+TARGET_OTA_ASSERT_DEVICE := klimtwifi
+
+# Kernel
+TARGET_KERNEL_CONFIG := cyanogenmod_klimtwifi_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/klimtwifi
+
+# Hardware
+BOARD_HARDWARE_CLASS += device/samsung/klimtwifi/cmhw
+
+# Partitions
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12532580352
 
 # PowerHAL
 TARGET_POWERHAL_VARIANT := klimtwifi
 
 # Recovery
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.universal5420
-TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_RECOVERY_SWIPE := true
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-
-# Scaler
-BOARD_USES_SCALER := true
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-	device/samsung/klimtwifi/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	device.te \
-	domain.te \
-	drmserver.te \
-	file.te \
-	gpsd.te \
-	init.te \
-	kernel.te \
-	macloader.te \
-	mediaserver.te \
-        service_contexts \
-	servicemanager.te \
-	system_app.te \
-	system_server.te \
-	sswap.te \
-	vold.te \
-	wpa.te
 
 # SurfaceFlinger
 BOARD_USES_SYNC_MODE_FOR_MEDIA := true
-
-# Webkit
-ENABLE_WEBGL := true
-
-# WFD
-BOARD_USES_WFD_SERVICE := true
-BOARD_USES_WFD := true
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI          := true
@@ -183,6 +67,7 @@ BOARD_HOSTAPD_DRIVER             := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/wifi/bcmdhd_sta.bin"
+WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 
 # inherit from the proprietary version
 -include vendor/samsung/klimtwifi/BoardConfigVendor.mk

@@ -54,7 +54,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
          name: "Exynos5420 Camera Wrapper",
-         author: "BLCK",
+         author: "The CyanogenMod Project",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
          reserved: {0}, /* remove compilation warnings */

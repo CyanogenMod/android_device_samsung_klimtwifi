@@ -50,7 +50,6 @@ LOCAL_SHARED_LIBRARIES := liblog libutils
 
 include $(BUILD_SHARED_LIBRARY)
 
-
 # Mixer configurations
 include $(CLEAR_VARS)
 LOCAL_MODULE := mixer_paths.xml
