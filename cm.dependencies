@@ -1,7 +1,6 @@
 [
     {
-        "repository": "android_kernel_samsung_klimtwifi",
-        "target_path": "kernel/samsung/klimtwifi"
+        "repository": "android_device_samsung_klimt-common",
+        "target_path": "device/samsung/klimt-common"
     }
 ]
-
