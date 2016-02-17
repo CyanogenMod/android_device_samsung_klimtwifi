@@ -265,6 +265,13 @@ on boot
 
     write /proc/sys/vm/swappiness 130
 
+# Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+# Fingerprint_sensor
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
 # PMS DVFS
     chown radio system /sys/power/cpufreq_table
     chown radio system /sys/power/cpufreq_max_limit
@@ -515,7 +522,19 @@ service gpsd /system/bin/gpsd -c /system/etc/gps.xml
 service mobicore /system/bin/mcDriverDaemon -r /system/app/FFFFFFFF000000000000000000000001.drbin -r /system/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin
     class core
     user system
-    group system    
+    group system
+
+# Fingerprint scanner
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group input
+
+# SENSOR FRAMEWORK : starts fingerprintService
+service vcsFPService /system/bin/vcsFPService
+    class late_start
+    user system
+    group system
 
 # LPM
 on charger

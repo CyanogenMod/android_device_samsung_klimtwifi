@@ -69,7 +69,7 @@
 # Secure MEM driver
 /dev/s5p-smem             0660   system     system
 
-# vfs
+# Fingerprint
 /dev/vfsspi        0660   system     system
 
 # USB Driver

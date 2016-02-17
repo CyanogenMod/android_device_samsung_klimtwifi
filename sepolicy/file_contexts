@@ -26,6 +26,12 @@
 /dev/video44            u:object_r:camera_device:s0
 /dev/media2             u:object_r:camera_device:s0
 
+# Fingerprint
+/system/bin/vcsFPService                                u:object_r:vcs_exec:s0
+/data/validity(/.*)?                                    u:object_r:vcs_data_file:s0
+/dev/validity(/.*)?                                     u:object_r:validity_device:s0
+/dev/vfsspi                                             u:object_r:vfsspi_device:s0
+
 /efs/bluetooth(/.*)?    u:object_r:bluetooth_data_file:s0
 
 /data/\.gps\.interface\.pipe\.to_gpsd	u:object_r:gps_data_file:s0
