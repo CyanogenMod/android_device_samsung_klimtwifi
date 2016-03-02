@@ -3,11 +3,11 @@
 
     <!-- Display settings.  The display mode. These are shown in a list dialog. -->
     <string-array name="screen_colortone_entries">
-        <item>Dynamic</item>
-        <item>Standard</item>
-        <item>Natural</item>
-        <item>Movie</item>
-        <item>Auto</item>
+        <item>@string/live_display_color_profile_dynamic_title</item>
+        <item>@string/live_display_color_profile_standard_title</item>
+        <item>@string/live_display_color_profile_natural_title</item>
+        <item>@string/live_display_color_profile_cinema_title</item>
+        <item>@string/live_display_color_profile_basic_title</item>
     </string-array>
 
     <!-- Do not translate. -->
