@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/klimtlte
+LOCAL_PATH := device/samsung/klimtwifi
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
@@ -229,7 +229,7 @@ $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5420/exynos5420.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/klimtlte/klimtlte-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/klimtwifi/klimtwifi-vendor.mk)
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/tabs-common/tabs-common-vendor.mk)
