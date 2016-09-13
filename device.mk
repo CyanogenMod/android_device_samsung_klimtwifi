@@ -92,10 +92,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
-PRODUCT_PROPERTY_OVERRIDES := \
-    keyguard.no_require_sim=true \
-    ro.com.android.dataroaming=true
-
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.exynos5
@@ -161,8 +157,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
 # Power
@@ -176,16 +170,12 @@ PRODUCT_PACKAGES += \
     init.universal5420.power.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
-    init.baseband.rc \
     ueventd.universal5420.rc
 
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
     libsecril-client \
-    libsecril-client-sap \
-    libril \
-    librilutils \
-    rild 
+    libsecril-client-sap
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -218,8 +208,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     libnetcmdiface \
-    macloader \
-    modemloader
+    macloader
 
 # CPU producer to CPU consumer not supported
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -231,13 +220,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-filter=speed \
     dalvik.vm.dex2oat-swap=false
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown
-
-# cpboot-daemon for modem
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ril/sbin/cbd:root/sbin/cbd
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)

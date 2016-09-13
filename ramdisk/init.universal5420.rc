@@ -1,12 +1,11 @@
 import init.universal5420.power.rc
 import init.universal5420.usb.rc
 import init.universal5420.wifi.rc
-import init.baseband.rc
 import init.samsung.rc
 
 on init
 
-    export LD_SHIM_LIBS "/system/lib/libexynoscamera.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so:/system/lib/libsec-ril.so|libsamsung_symbols.so"
+    export LD_SHIM_LIBS "/system/lib/libexynoscamera.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -93,6 +92,8 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 	oneshot
 
 on boot
+    setprop ro.radio.noril yes
+    stop ril-daemon
 
     # Reduce reserved lowmem from ~48MB to ~12MB
     write /proc/sys/vm/lowmem_reserve_ratio "128 128"
